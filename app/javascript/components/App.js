@@ -30,6 +30,7 @@ class App extends Component {
 
         <Header
           logged_in={ this.props.logged_in }
+          new_user_route={ this.props.new_user_route }
           sign_in_route={ this.props.sign_in_route }
           sign_out_route={ this.props.sign_out_route }
         />

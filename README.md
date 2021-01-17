@@ -7,9 +7,9 @@
 - $ bundle add react-rails
 - $ rails webpacker:install
 - $ rails webpacker:install:react
-- $ rails g react:install
-- $ rails g react:component App
-- $ rails g controller Home
+- $ rails generate react:install
+- $ rails generate react:component App
+- $ rails generate controller Home
 - Added to *app/view/home/index.html.erb* `<%= react_component "App" %>`
 - Added to *config/routes* `root to: 'home#index'`
 - $ bundle add rspec-rails
@@ -54,3 +54,19 @@
 ### Show
 - Dynamic route
 - Pass one apartment and display the content
+
+### ProtectedIndex
+- Added `current_user` to Devise routes in *index.html.erb*
+- Added new component to show apartments that belong to a user
+- Route will filter the apartments in state and return only the apartments that match the current_user id
+- Copied code from regular index and added to the ProtectedIndex page to display content
+
+### Validations and Model Specs
+- Validations for all columns in apartment
+- Specs for all validations in *spec/models/apartments_spec.rb*
+
+### Controller Methods
+- Added index, create, update, delete, apartment_params
+- Added request_specs for all methods and checking for params of all apartments columns
+- Added one user and two apartments in the seeds file
+- Testing all the endpoints in Postman
