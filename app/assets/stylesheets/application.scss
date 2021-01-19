@@ -11,6 +11,10 @@ h1 {
   display: inline;
 }
 
+h3 {
+  margin-left: 10px;
+}
+
 #hero-image {
   background-image: url("https://t3.ftcdn.net/jpg/03/32/03/74/360_F_332037411_OYdMrJ9QgR6QMymOPdvHA8yQfZXbOdyc.jpg");
   height: 300px;
@@ -21,12 +25,14 @@ h1 {
   display: inline;
   height: 15vh;
   font-weight: bold;
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 25px;
 }
 
 .top-nav{
-  height: 15vh;
-  margin-left: 20px;
-  margin-right: 20px;
+  height: 10vh;
+  margin: 20px;
 }
 
 ul{
@@ -51,4 +57,31 @@ a {
 .home-title {
   color: white;
   font-size: 100px;
+}
+
+.main-index {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.index-card {
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  width: 300px;
+  height: 210px;
+  padding-top: 10px;
+  background-color: #FFFAF1;
+}
+.card-button {
+  margin-top: 60px;
+}
+.protected {
+  height: 375px;
+}
+.show {
+  height: 355px;
 }

@@ -6,7 +6,7 @@ RSpec.describe "Apartments", type: :request do
 
   # -----index-----
     it 'gets all the apartments' do
-      apartment = Apartment.create street: '221B Baker Street', city: 'London', state: 'England', manager: 'Ms. Hudson', email: 'mzhud@email.com', price: '1000', bedrooms: 2, bathrooms: 2, pets: 'no', user_id: user.id
+      Apartment.create street: '221B Baker Street', city: 'London', state: 'England', manager: 'Ms. Hudson', email: 'mzhud@email.com', price: '1000', bedrooms: 2, bathrooms: 2, pets: 'no', user_id: user.id
 
       get '/apartments'
       apartments = JSON.parse(response.body)

@@ -6,6 +6,7 @@ import ApartmentIndex from './pages/ApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
 import ProtectedIndex from './pages/ProtectedIndex'
 import ApartmentNew from './pages/ApartmentNew'
+import ApartmentEdit from './pages/ApartmentEdit'
 import NotFound from './pages/NotFound'
 
 import {
@@ -28,10 +29,18 @@ class App extends Component {
     console.log(newapartment)
   }
 
+  editApartment = (editedapartment) => {
+    console.log(editedapartment)
+  }
+
+  deleteApartment = (apartment) => {
+    console.log(apartment)
+  }
+
   render () {
     console.log(this.state.apartments)
     console.log("logged in", this.props.logged_in)
-    console.log("current user", this.props.current_user.id)
+    console.log("current user", this.props.current_user)
     return (
       <Router>
 
@@ -57,7 +66,7 @@ class App extends Component {
 
           {/* -----Show----- */}
           <Route
-            path='/aptshow/:id'
+            path='/apartmentshow/:id'
             render={ (props) => {
               let id = props.match.params.id
               let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
@@ -75,17 +84,33 @@ class App extends Component {
               let myapartments = this.state.apartments.filter(apt => apt.user_id === id)
               console.log(myapartments)
               return(
-                <ProtectedIndex myapartments={ myapartments } />
+                <ProtectedIndex myapartments={ myapartments } deleteApartment={ this.deleteApartment }/>
               )
             }}
           />
 
-          {/* -----Apartment New----- */}
+          {/* -----Protected Apartment New----- */}
           <Route
             path="/apartmentnew"
             render={ (props) => {
               return (
                 <ApartmentNew current_user={ this.props.current_user } createNewApartment={ this.createNewApartment } />
+              )
+            }}
+          />
+
+          {/* ----- Protected Apartment Edit----- */}
+          <Route
+            path="/apartmentedit/:id"
+            render={ (props) => {
+              let id = props.match.params.id
+              let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
+              return (
+                <ApartmentEdit
+                  current_user={ this.props.current_user }
+                  editApartment={ this.editApartment }
+                  apartment= { apartment }
+                />
               )
             }}
           />

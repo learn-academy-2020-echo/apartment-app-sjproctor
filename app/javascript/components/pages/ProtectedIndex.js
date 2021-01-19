@@ -7,22 +7,34 @@ class ProtectedIndex extends Component {
     return (
       <>
         <h3>My Apartments</h3>
-        { this.props.myapartments && this.props.myapartments.map((apartment, index) => {
-          return (
-            <div key={ index }>
-              <h5>{ apartment.street }</h5>
-              <h5>{ apartment.city }</h5>
-              <h5>{ apartment.state }</h5>
-              <p>
-                <NavLink to={`/aptshow/${apartment.id}`}>
-                  <Button color="secondary">
-                    More Info
-                  </Button>
-                </NavLink>
-              </p>
-            </div>
-          )
-        })}
+        <div className="main-index">
+          { this.props.myapartments && this.props.myapartments.map((apartment, index) => {
+            return (
+              <div key={ index } className="index-card protected">
+                <h5>{ apartment.street }</h5>
+                <h5>{ apartment.city }</h5>
+                <h5>{ apartment.state }</h5>
+                <h5>{ apartment.manager }</h5>
+                <h5>{ apartment.email }</h5>
+                <h5>Bedrooms: { apartment.bedrooms }</h5>
+                <h5>Bathrooms: { apartment.bathrooms }</h5>
+                <h5>Pets: { apartment.pets }</h5>
+                <div className="card-button protected-button">
+                  <NavLink to={`/apartmentedit/${apartment.id}`}>
+                    <Button color="secondary">
+                      Edit Content
+                    </Button>
+                  </NavLink>
+                  <NavLink to={"/myapartments"}>
+                    <Button color="secondary" onClick={ () => this.props.deleteApartment }>
+                      Delete
+                    </Button>
+                  </NavLink>
+                </div>
+              </div>
+            )
+          })}
+          </div>
       </>
     )
   }
