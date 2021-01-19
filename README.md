@@ -70,3 +70,24 @@
 - Added request_specs for all methods and checking for params of all apartments columns
 - Added one user and two apartments in the seeds file
 - Testing all the endpoints in Postman
+
+### Favicon
+- Added an image to *app/assets/images*
+- Added `<%= favicon_link_tag asset_path('house-icon.png') %>` to *app/views/layout/application.html.erb*
+
+### Google Font
+- Imported Google Font into app using the `@import` option
+- Set the font to apply to all tags as default
+
+### Navigation
+- Added all existing pages to links in Header
+- Imported NavLink from `react-router-dom` for internal component navigation
+
+### New Page
+- Adding a ApartmentNew component
+- Added the link in the navigation in Header
+- Added Forms from reactstrap for all fields
+- Added handleChange to connect form fields to state
+- Added handleSubmit to connect to App.js
+- Added method to log new apartment in App.js
+- Passed new method and current_user to AparmentNew component

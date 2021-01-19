@@ -9,7 +9,7 @@ class ProtectedIndex extends Component {
         <h3>My Apartments</h3>
         { this.props.myapartments && this.props.myapartments.map((apartment, index) => {
           return (
-            <div>
+            <div key={ index }>
               <h5>{ apartment.street }</h5>
               <h5>{ apartment.city }</h5>
               <h5>{ apartment.state }</h5>

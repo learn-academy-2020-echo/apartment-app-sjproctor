@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+// import apartmentLogo from './apartment-app.png'
 
 class Header extends Component {
   render() {
@@ -9,15 +11,23 @@ class Header extends Component {
     } = this.props
     return (
       <>
-        <h1>Apartment App</h1>
-        {
-          !logged_in &&
-          <a href={ sign_in_route }>Sign In</a>
-        }
-        {
-          logged_in &&
-          <a href= { sign_out_route }>Sign Out</a>
-        }
+        <div className="top-nav">
+          <div className="apartment-logo">AP</div>
+          <ul className="login">
+            {
+              !logged_in &&
+              <li><a href={ sign_in_route }>Sign In</a></li>
+            }
+            {
+              logged_in &&
+              <li><a href={ sign_out_route }>Sign Out</a></li>
+            }
+            <li><NavLink to="/">Home</NavLink></li>
+            <li><NavLink to="/apartmentindex">Apartment Listings</NavLink></li>
+            <li><NavLink to="/myapartments">My Apartments</NavLink></li>
+            <li><NavLink to="/apartmentnew">Add Apartment</NavLink></li>
+          </ul>
+        </div>
       </>
     )
   }

@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import ApartmentIndex from './pages/ApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
 import ProtectedIndex from './pages/ProtectedIndex'
+import ApartmentNew from './pages/ApartmentNew'
 import NotFound from './pages/NotFound'
 
 import {
@@ -22,7 +23,13 @@ class App extends Component {
       apartments: mockApartments
     }
   }
+
+  createNewApartment = (newapartment) => {
+    console.log(newapartment)
+  }
+
   render () {
+    console.log(this.state.apartments)
     console.log("logged in", this.props.logged_in)
     console.log("current user", this.props.current_user.id)
     return (
@@ -40,9 +47,9 @@ class App extends Component {
 
           {/* -----Index----- */}
           <Route
-            path='/aptindex'
+            path='/apartmentindex'
             render= { (props) => <ApartmentIndex
-              apartments = { this.state.apartments }
+              apartments={ this.state.apartments }
             />
             }
           />
@@ -62,13 +69,23 @@ class App extends Component {
 
           {/* -----Protected Index----- */}
           <Route
-            path='/myapt'
+            path="/myapartments"
             render={ (props) => {
               let id = this.props.current_user.id
               let myapartments = this.state.apartments.filter(apt => apt.user_id === id)
               console.log(myapartments)
               return(
                 <ProtectedIndex myapartments={ myapartments } />
+              )
+            }}
+          />
+
+          {/* -----Apartment New----- */}
+          <Route
+            path="/apartmentnew"
+            render={ (props) => {
+              return (
+                <ApartmentNew current_user={ this.props.current_user } createNewApartment={ this.createNewApartment } />
               )
             }}
           />
