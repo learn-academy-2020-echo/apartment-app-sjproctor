@@ -39,7 +39,6 @@ class ApartmentNew extends Component{
   }
 
   render(){
-    console.log("current_user", this.props.current_user)
     return(
       <React.Fragment>
         <h3>Add an Apartment</h3>
@@ -92,10 +91,20 @@ class ApartmentNew extends Component{
                 />
               </FormGroup>
               <FormGroup>
+                <Label>Price</Label>
+                <Input
+                  type="text"
+                  name="price"
+                  onChange={ this.handleChange }
+                  value={ this.state.form.price }
+                />
+              </FormGroup>
+              <FormGroup>
                 <Label>Number of Bedrooms</Label>
                 <Input
                   type="number"
                   name="bedrooms"
+                  min="1" max="100"
                   onChange={ this.handleChange }
                   value={ this.state.form.bedrooms }
                 />
@@ -105,6 +114,7 @@ class ApartmentNew extends Component{
                 <Input
                   type="number"
                   name="bathrooms"
+                  min="1" max="100"
                   onChange={ this.handleChange }
                   value={ this.state.form.bathrooms }
                 />

@@ -16,9 +16,10 @@ h3 {
 }
 
 #hero-image {
-  background-image: url("https://t3.ftcdn.net/jpg/03/32/03/74/360_F_332037411_OYdMrJ9QgR6QMymOPdvHA8yQfZXbOdyc.jpg");
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHmBMhWn00ODaZNS9zUBW8Dy7SYdg_81xDflXmnh-NsH2K4e-Up2zVa5xIHl0Wi5Zi1qThXw&usqp=CAc");
   height: 300px;
   text-align: center;
+  opacity: 0.7
 }
 
 .apartment-logo {
@@ -52,11 +53,6 @@ a {
 
 .login {
   display: inline;
-}
-
-.home-title {
-  color: white;
-  font-size: 100px;
 }
 
 .main-index {

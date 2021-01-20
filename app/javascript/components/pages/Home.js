@@ -5,7 +5,6 @@ class Home extends Component {
     return (
       <>
         <div id="hero-image">
-          <h1 className="home-title">Apartment App</h1>
         </div>
       </>
     )

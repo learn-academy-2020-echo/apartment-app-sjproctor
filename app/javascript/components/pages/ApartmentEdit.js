@@ -39,7 +39,7 @@ class ApartmentNew extends Component{
   }
 
   render(){
-    console.log("current_user", this.props.current_user)
+    console.log("current_user", this.props.current_user.id)
     return(
       <React.Fragment>
         <h3>Add an Apartment</h3>
@@ -89,6 +89,15 @@ class ApartmentNew extends Component{
                   name="email"
                   onChange={ this.handleChange }
                   value={ this.state.form.email }
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Price</Label>
+                <Input
+                  type="text"
+                  name="price"
+                  onChange={ this.handleChange }
+                  value={ this.state.form.price }
                 />
               </FormGroup>
               <FormGroup>

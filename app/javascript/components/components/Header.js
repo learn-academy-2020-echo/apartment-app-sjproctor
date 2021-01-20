@@ -23,8 +23,13 @@ class Header extends Component {
             }
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/apartmentindex">Apartment Listings</NavLink></li>
-            <li><NavLink to="/myapartments">My Apartments</NavLink></li>
-            <li><NavLink to="/apartmentnew">Add Apartment</NavLink></li>
+            {
+              logged_in &&
+              <>
+                <li><NavLink to="/myapartments">My Apartments</NavLink></li>
+                <li><NavLink to="/apartmentnew">Add Apartment</NavLink></li>
+              </>
+            }
           </ul>
         </div>
       </>

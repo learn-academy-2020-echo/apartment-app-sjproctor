@@ -90,4 +90,15 @@
 - Added handleChange to connect form fields to state
 - Added handleSubmit to connect to App.js
 - Added method to log new apartment in App.js
-- Passed new method and current_user to AparmentNew component
+- Passed new method and current_user to ApartmentNew component
+
+### Edit Page
+- Adding a ApartmentEdit component
+- Added the link to the button for the edit page in the protected index
+- Copied form from ApartmentNew page
+- Added method to log edited apartment in App.js
+- Passed edit method, current_user, single apartment by id to ApartmentEdit component
+
+### Delete Button
+- Added a delete button to each item in the protected index
+- Added delete method mock to App.js and passed it to ProtectedIndex
