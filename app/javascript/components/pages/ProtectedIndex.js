@@ -16,6 +16,7 @@ class ProtectedIndex extends Component {
                 <h5>{ apartment.state }</h5>
                 <h5>{ apartment.manager }</h5>
                 <h5>{ apartment.email }</h5>
+                <h5>Price: ${ apartment.price }</h5>
                 <h5>Bedrooms: { apartment.bedrooms }</h5>
                 <h5>Bathrooms: { apartment.bathrooms }</h5>
                 <h5>Pets: { apartment.pets }</h5>
@@ -26,7 +27,7 @@ class ProtectedIndex extends Component {
                     </Button>
                   </NavLink>
                   <NavLink to={"/myapartments"}>
-                    <Button color="secondary" onClick={ () => this.props.deleteApartment }>
+                    <Button color="secondary" onClick={ () => this.props.deleteApartment(apartment.id) }>
                       Delete
                     </Button>
                   </NavLink>

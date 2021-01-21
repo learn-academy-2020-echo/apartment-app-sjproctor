@@ -13,21 +13,28 @@ class Header extends Component {
         <div className="top-nav">
           <div className="apartment-logo">AP</div>
           <ul className="login">
-            {
-              !logged_in &&
-              <li><a href={ sign_in_route }>Sign In</a></li>
+            { !logged_in &&
+              <li>
+              <a href={ sign_in_route }>Sign In</a>
+              </li>
             }
-            {
-              logged_in &&
-              <li><a href={ sign_out_route }>Sign Out</a></li>
-            }
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/apartmentindex">Apartment Listings</NavLink></li>
-            {
-              logged_in &&
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/apartmentindex">Apartment Listings</NavLink>
+            </li>
+            { logged_in &&
               <>
-                <li><NavLink to="/myapartments">My Apartments</NavLink></li>
-                <li><NavLink to="/apartmentnew">Add Apartment</NavLink></li>
+                <li>
+                  <a href={ sign_out_route }>Sign Out</a>
+                </li>
+                <li>
+                  <NavLink to="/myapartments">My Apartments</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/apartmentnew">Add Apartment</NavLink>
+                </li>
               </>
             }
           </ul>

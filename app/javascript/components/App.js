@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   createNewApartment = (newapartment) => {
-    console.log(newapartment)
     fetch("/apartments", {
       body: JSON.stringify(newapartment),
       headers: {
@@ -65,28 +64,71 @@ class App extends Component {
     })
   }
 
-  editApartment = (editedapartment) => {
-    console.log(editedapartment)
+  editApartment = (apartment, id) => {
+    fetch(`/apartments/${id}`, {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => {
+      console.log(response)
+      if(response.status === 422){
+        alert("There is something wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(() => {
+      this.indexApartment()
+    })
+    .catch(errors => {
+      console.log("create errors", errors)
+    })
   }
 
-  deleteApartment = (apartment) => {
-    console.log(apartment)
+  deleteApartment = (id) => {
+    alert("Delete this listing?")
+    fetch(`/apartments/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      console.log(response)
+      if(response.status === 422){
+        alert("There is something wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(() => {
+      this.indexApartment()
+    })
+    .catch(errors => {
+      console.log("create errors", errors)
+    })
   }
 
   render () {
     console.log("logged in", this.props.logged_in)
     console.log("current user", this.props.current_user)
     console.log(this.state.apartments)
+    const {
+      logged_in,
+      current_user,
+      new_user_route,
+      sign_in_route,
+      sign_out_route,
+    } = this.props
     return (
       <Router>
-
         <Header
-          logged_in={ this.props.logged_in }
-          new_user_route={ this.props.new_user_route }
-          sign_in_route={ this.props.sign_in_route }
-          sign_out_route={ this.props.sign_out_route }
+          logged_in={ logged_in }
+          new_user_route={ new_user_route }
+          sign_in_route={ sign_in_route }
+          sign_out_route={ sign_out_route }
         />
-
         <Switch>
           <Route exact path='/' component={ Home } />
 
@@ -98,7 +140,6 @@ class App extends Component {
             />
             }
           />
-
 
           {/* -----Show----- */}
           <Route
@@ -113,7 +154,7 @@ class App extends Component {
           />
 
           {/* -----Protected Index----- */}
-          { this.props.logged_in &&
+          { logged_in &&
             <Route
               path="/myapartments"
               render={ (props) => {
@@ -128,19 +169,19 @@ class App extends Component {
 
 
           {/* -----Protected Apartment New----- */}
-          { this.props.logged_in &&
+          { logged_in &&
             <Route
               path="/apartmentnew"
               render={ (props) => {
                 return (
-                  <ApartmentNew current_user={ this.props.current_user } createNewApartment={ this.createNewApartment } />
+                  <ApartmentNew current_user={ current_user } createNewApartment={ this.createNewApartment } />
                 )
               }}
             />
           }
 
           {/* ----- Protected Apartment Edit----- */}
-          { this.props.logged_in &&
+          { logged_in &&
             <Route
               path="/apartmentedit/:id"
               render={ (props) => {
@@ -148,15 +189,14 @@ class App extends Component {
                 let apartment = this.state.apartments.find(apartment => apartment.id === parseInt(id))
                 return (
                   <ApartmentEdit
-                    current_user={ this.props.current_user }
+                    current_user={ current_user }
                     editApartment={ this.editApartment }
-                    apartment= { apartment }
+                    apartment={ apartment }
                   />
                 )
               }}
             />
           }
-
           <Route component={ NotFound } />
         </Switch>
       </Router>

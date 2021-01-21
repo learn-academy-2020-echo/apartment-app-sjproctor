@@ -34,15 +34,14 @@ class ApartmentNew extends Component{
   }
 
   handleSubmit = () => {
-    this.props.editApartment(this.state.form)
+    this.props.editApartment(this.state.form, this.props.current_user.id)
     this.setState({ submitted: true })
   }
 
   render(){
-    console.log("current_user", this.props.current_user.id)
     return(
       <React.Fragment>
-        <h3>Add an Apartment</h3>
+        <h3>Update Apartment Content</h3>
         <div className="body-container">
           <div className="form">
             <Form>
@@ -148,7 +147,7 @@ class ApartmentNew extends Component{
                 color="secondary"
                 onClick={ this.handleSubmit }
               >
-                Add a New Apartment
+                Update Apartment Listing
               </Button>
             </Form>
           </div>
