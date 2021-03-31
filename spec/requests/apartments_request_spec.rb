@@ -2,17 +2,29 @@ require 'rails_helper'
 
 RSpec.describe "Apartments", type: :request do
 
-  let(:user) { User.create email: 'sarah@test.com', password: '123456', password_confirmation: '123456' }
+  let(:user) do
+    User.create(
+      email: 'sarah@test.com',
+      password: '123456',
+      password_confirmation: '123456'
+    )
+  end
 
   # -----index-----
     it 'gets all the apartments' do
-      Apartment.create street: '221B Baker Street', city: 'London', state: 'England', manager: 'Ms. Hudson', email: 'mzhud@email.com', price: '1000', bedrooms: 2, bathrooms: 2, pets: 'no', user_id: user.id
+      Apartment.create street: '221c Baker Street', city: 'London', state: 'England', manager: 'Ms. Hudson', email: 'mzhud@email.com', price: '1000', bedrooms: 2, bathrooms: 2, pets: 'no', user_id: user.id
 
       get '/apartments'
       apartments = JSON.parse(response.body)
 
       expect(apartments.length).to eq 1
       expect(response).to have_http_status(200)
+      apartment = apartments[0]
+      p apartment
+      expect(apartment).to include(
+        'id' => apartment.id,
+        street: apartment.street
+      )
     end
 
     # -----create-----

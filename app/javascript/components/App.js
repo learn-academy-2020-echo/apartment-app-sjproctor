@@ -87,6 +87,9 @@ class App extends Component {
     })
   }
 
+  getApiData = () => {
+    fetch(`https://www.api.com/key=${process.env.REACT_APP_API_KEY}q=${this.state.location}`)
+  }
   deleteApartment = (id) => {
     alert("Delete this listing?")
     fetch(`/apartments/${id}`, {
@@ -114,6 +117,7 @@ class App extends Component {
     console.log("logged in", this.props.logged_in)
     console.log("current user", this.props.current_user)
     console.log(this.state.apartments)
+    console.log(process.env.REACT_APP_API_KEY)
     const {
       logged_in,
       current_user,
